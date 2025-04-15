@@ -1,5 +1,20 @@
-venv
-/venv
-.venv
+# Środowiska wirtualne
+venv/
+.venv/
 
+# Cache Pythona
+__pycache__/
+*.pyc
+
+# Pliki konfiguracyjne
 .env
+
+# Edytory
+.vscode/
+.idea/
+
+# Systemowe i śmieciowe
+.DS_Store
+Thumbs.db
+*.log
+~$*
