@@ -1,20 +1,67 @@
-# Środowiska wirtualne
+# 🐍 Środowiska wirtualne
 venv/
 .venv/
+env/
+ENV/
+env.bak/
+venv.bak/
 
-# Cache Pythona
+# ⚙️ Pliki cache Pythona
 __pycache__/
-*.pyc
+*.py[cod]
+*$py.class
 
-# Pliki konfiguracyjne
+# 📦 Pliki związane z pakowaniem i dystrybucją
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# 📄 Pliki logów i tymczasowe
+*.log
+pip-log.txt
+pip-delete-this-directory.txt
+
+# 🧪 Pliki testów i raportów pokrycia
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+
+# 🌐 Pliki konfiguracyjne środowiska
 .env
+.env.*
+.pdm.toml
+.pdm-python
 
-# Edytory
+# 🧠 Pliki IDE i edytorów
 .vscode/
 .idea/
+*.sublime-workspace
+*.sublime-project
+.spyderproject
+.spyproject
+.ropeproject
 
-# Systemowe i śmieciowe
+# 🖼️ Pliki systemowe i inne niepotrzebne
 .DS_Store
 Thumbs.db
-*.log
 ~$*

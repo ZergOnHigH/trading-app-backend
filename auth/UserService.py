@@ -1,5 +1,7 @@
 from auth.UserModel import UserModel
 from extensions import mongodb
+from utils.generate_token import generate_token
+from bson import ObjectId
 
 class UserService:
 
@@ -19,14 +21,30 @@ class UserService:
 
     @staticmethod
     def login_user(data):
-        print(data)
         user = UserService.email_exists(data["email"])
         if not user:
             raise Exception("Nie znaleziono użytkownika")
         if not UserModel.check_password(user["password"],data["password"]):
             raise Exception("Nieprawidłowe hasło")
 
+        token = generate_token(user)
+        return token
+
+    @staticmethod 
+    def change_password(data, id):
+
+        if not data["old_password"] or not data["new_password"]:
+            raise Exception("Hasło nie może być puste")
+        
+        UserService.get_repo().update_one(
+            {"_id": ObjectId(id)},
+            {"$set": {"password": UserModel.hash_password(data["new_password"])}}
+        )
         return True
+
+
+
+        
 
 
     @staticmethod

@@ -1,0 +1,7 @@
+Flask
+Flask-PyMongo
+Flask-JWT-Extended
+Flask-Mail
+python-dotenv
+marshmallow
+pymongo
