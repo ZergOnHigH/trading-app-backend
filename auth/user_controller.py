@@ -43,4 +43,15 @@ def change_password():
         return json_msg("Hasło zostało zmienione", "success", 200)
     except Exception as e:
         return json_msg(str(e), "error", 400, str(e))
-   
+
+@user_bp.route("/activate/<token>", methods=["GET"])
+def activate_user(token):
+    user = UserService.get_repo().find_one({"activation_token": token})
+    if not user:
+        return json_msg("Nieprawidłowy token","error",400)
+
+    UserService.get_repo().update_one(
+        {"_id": user["_id"]},
+        {"$set": {"is_active": True}, "$unset": {"activation_token": ""}}
+    )
+    return json_msg("Konto zostało aktywowane!","success",200)

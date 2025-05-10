@@ -12,6 +12,22 @@ class Email_Service:
         mail.init_app(app)
 
     @staticmethod
+    def send_activation_email(recipient, token):
+        subject = "Aktywuj swoje konto"
+        activation_link = f"http://localhost:5000/api/auth/activate/{token}"
+
+        try:
+            msg = Message(subject=subject, recipients=[recipient])
+            msg.html = render_template('email_activate.html', activation_link=activation_link)
+
+            mail.send(msg)
+            logging.info(f"Email sent successfully to {recipient}")
+
+        except Exception as e:
+            logging.error(f"Failed to send activation email: {e}")
+
+
+    @staticmethod
     def send_email():
         data = request.get_json()
         subject = data["subject"]
