@@ -2,6 +2,7 @@ from flask import request, jsonify, render_template
 from flask_mail import Message, Mail
 from werkzeug.utils import secure_filename
 import logging
+from config import Config
 
 mail = Mail() # Initialize Flask-Mail
 
@@ -14,9 +15,10 @@ class Email_Service:
     @staticmethod
     def send_activation_email(recipient, token):
         subject = "Aktywuj swoje konto"
-        activation_link = f"http://localhost:5000/api/auth/activate/{token}"
+        activation_link = f"{Config.CLIENT_URL}/aktywacja/{token}"
 
         try:
+
             msg = Message(subject=subject, recipients=[recipient])
             msg.html = render_template('email_activate.html', activation_link=activation_link)
 

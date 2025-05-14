@@ -14,4 +14,5 @@ class Config:
     MAIL_USERNAME = os.getenv("MAIL_USERNAME")
     MAIL_PASSWORD = os.getenv("MAIL_PASSWORD")
     MAIL_DEFAULT_SENDER = os.getenv("MAIL_DEFAULT_SENDER")
+    CLIENT_URL= os.getenv("CLIENT_URL")
     # DOCX_TEMPLATE = os.getenv("DOCX_TEMPLATE")
